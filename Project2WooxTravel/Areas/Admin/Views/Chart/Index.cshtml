@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+@{
+    ViewData["Title"] = "Grafikler";
+}
+<div class="container" style="max-width: 1000px; margin: 0 auto; padding: 20px;">
+    <h2 style="text-align: center; margin-bottom: 20px;">Grafikler</h2>
+
+    <!-- 2x2 Düzen: 2 Üste, 2 Alta Yerleşim -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+
+        <!-- Rezervasyonlar Grafiği -->
+        <div style="background-color: #ffffff; padding: 15px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+            <h4 style="text-align: center; margin-bottom: 10px;">Rezervasyonlar Grafiği</h4>
+            <canvas id="reservationChart" style="max-height: 250px;"></canvas>
+        </div>
+
+        <!-- En Çok Ziyaret Edilen Destinasyonlar (Bar Chart) -->
+        <div style="background-color: #ffffff; padding: 15px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+            <h4 style="text-align: center; margin-bottom: 10px;">En Çok Ziyaret Edilen Destinasyonlar</h4>
+            <canvas id="popularDestinationsBarChart" style="max-height: 250px;"></canvas>
+        </div>
+
+        <!-- En Çok Ziyaret Edilen Destinasyonlar (Pie Chart) -->
+        <div style="background-color: #ffffff; padding: 15px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+            <h4 style="text-align: center; margin-bottom: 10px;">En Çok Ziyaret Edilen Destinasyonlar </h4>
+            <canvas id="popularDestinationsPieChart" style="max-height: 250px;"></canvas>
+        </div>
+
+        <!-- En Çok Ziyaret Edilen Destinasyonlar (Donut Chart) -->
+        <div style="background-color: #ffffff; padding: 15px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+            <h4 style="text-align: center; margin-bottom: 10px;">En Çok Ziyaret Edilen Destinasyonlar </h4>
+            <canvas id="popularDestinationsDonutChart" style="max-height: 250px;"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+    // Rezervasyonlar Grafiği (Bar Chart)
+    var reservationCtx = document.getElementById('reservationChart').getContext('2d');
+    var reservationChart = new Chart(reservationCtx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Json.Encode(ViewBag.ReservationsName)),
+            datasets: [{
+                label: 'Kişi Sayısı',
+                data: @Html.Raw(Json.Encode(ViewBag.ReservationPerson)),
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            },
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    // En Çok Ziyaret Edilen Destinasyonlar Grafiği (Bar Chart)
+    var popularDestinationsBarCtx = document.getElementById('popularDestinationsBarChart').getContext('2d');
+    var popularDestinationsBarChart = new Chart(popularDestinationsBarCtx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Json.Encode(ViewBag.TurSayısıAdı)),
+            datasets: [{
+                label: 'Ziyaret Sayısı',
+                data: @Html.Raw(Json.Encode(ViewBag.TurKapasitesi)),
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            },
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    var popularDestinationsPieCtx = document.getElementById('popularDestinationsPieChart').getContext('2d');
+    var popularDestinationsPieChart = new Chart(popularDestinationsPieCtx, {
+        type: 'pie',
+        data: {
+            labels: @Html.Raw(Json.Encode(ViewBag.TopResName)),
+            datasets: [{
+                label: 'Ziyaret Sayısı',
+                data: @Html.Raw(Json.Encode(ViewBag.TurFiyatı)),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)', 'rgba(255, 159, 64, 0.6)',
+                    'rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)',
+                    'rgba(54, 162, 235, 0.6)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    var popularDestinationsDonutCtx = document.getElementById('popularDestinationsDonutChart').getContext('2d');
+    var popularDestinationsDonutChart = new Chart(popularDestinationsDonutCtx, {
+        type: 'doughnut',
+        data: {
+            labels: @Html.Raw(Json.Encode(ViewBag.ReservationsName)),
+            datasets: [{
+                label: 'Ziyaret Sayısı',
+                data: @Html.Raw(Json.Encode(ViewBag.TurKapasitesi)),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)', 'rgba(255, 159, 64, 0.6)',
+                    'rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)',
+                    'rgba(54, 162, 235, 0.6)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+    </script>
+</div>

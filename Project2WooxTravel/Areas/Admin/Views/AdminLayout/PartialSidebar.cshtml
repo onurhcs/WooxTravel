@@ -1,0 +1,100 @@
+﻿<div class="sidebar" data-background-color="dark">
+    <div class="sidebar-logo">
+        <!-- Logo Header -->
+        <div class="logo-header" data-background-color="dark">
+            <a href="~/kaiadmin-lite-1.2.0/index.html" class="logo">
+                <img src="~/kaiadmin-lite-1.2.0/assets/img/kaiadmin/logo_light.svg"
+                     alt="navbar brand"
+                     class="navbar-brand"
+                     height="20" />
+            </a>
+            <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                    <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                    <i class="gg-menu-left"></i>
+                </button>
+            </div>
+            <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+            </button>
+        </div>
+        <!-- End Logo Header -->
+    </div>
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">ADMİN PANELİ</h4>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("CategoryList", "Category")"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="fa fa-tasks" style="font-size:24px"></i>
+                        <p>Category List</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("DestinationList", "Destination")"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="fa fa-location"></i>
+                        <p>Destination List</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("CreateDestination", "Destination")"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="fas fa-chart-pie"></i>
+                        <p>Add Destination</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="@Url.Action("ReservationList", "Reservation")"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="fas fa-chart-pie"></i>
+                        <p>Reservation List</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Inbox", "Message")"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="fas fa-inbox"></i>
+                        <p>Incoming Messages</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Chart")"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="fas fa-chart-pie"></i>
+                        <p>Pie Chart</p>
+                    </a>
+                </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Ödeme Yöntemi</h4>
+                </li>
+                <li class="nav-item">
+                    <a href="/Admin/CreditCard/Index/"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="fas fa-credit-card"></i>
+                        <p>Payment Method Credit Card</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

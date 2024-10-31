@@ -1,0 +1,50 @@
+﻿@model List<Project2WooxTravel.Entities.Reservation>
+@{
+    ViewBag.Title = "ReservationList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Destination İşlemleri</div>
+                </div>
+                <div class="card-body">
+                    <table class="table mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Person Count</th>
+                                <th scope="col">History </th>
+                                <th scope="col">Description</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.PersonCount</td>
+                                    <td>@item.ReservationDate.ToString("dd MMMM yyyy")</td>
+                                    <td>@item.Description</td>
+
+                                    <td><a href="~/Areas/Admin/Views/Reservation/CreateReservation/@item.ReservationId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="~/Admin/Views/Reservation/UpdateReservation/@item.ReservationId" class="btn btn-success">Güncelle</a></td>
+                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <td><a href="~/Admin/Views/Reservation/CreateReservation.cshtml" class="btn btn-primary">Rezervasyon</a></td>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

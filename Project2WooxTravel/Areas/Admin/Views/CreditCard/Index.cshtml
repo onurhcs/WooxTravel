@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/credit-card-form-main/images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="~/credit-card-form-main/style.css">
+    <link rel="stylesheet" href="~/credit-card-form-main/mediaqueries.css">
+    <title>Interactive card details form</title>
+
+</head>
+
+<body>
+
+    <section class="main-container">
+        <div class="content-container">
+
+            <div class="cards">
+                <div class="card-front">
+                    <img src="~/credit-card-form-main/images/card-logo.svg" alt="logo" width="40px">
+                    <p class="cardNumberP">0000 0000 0000 0000</p>
+                    <div>
+                        <span class="nameSpan">NAME SURNAME</span>
+                        <span>
+                            <span class="monthSpan">04</span>/
+                            <span class="yearSpan">23</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <p class="cvcP">123</p>
+                </div>
+            </div>
+
+            <form class="form">
+                <label for="name">Kart Üzerindeki İsim</label>
+                <input type="text" name="name" class="name" placeholder="Nanme Surname" maxlength="28" autocomplete="off">
+                <p class="empty">Bu alan boş bırakılamaz.</p>
+                <label for="card-number">Kart Numarası</label>
+                <input type="text" name="card-number" class="cardNumber" placeholder="Ex.: 1234 5678 9123 0000" maxlength="19"
+                       autocomplete="off">
+                <p class="empty">Bu alan boş bırakılamaz.</p>
+                <p class="error">Geçersiz giriş, lütfen yalnızca sayı giriniz.</p>
+                <div class="date-cvc">
+                    <div class="date">
+                        <label for="date">Son Kullanma Tarihi (AA/YY)</label>
+                        <input type="text" name="month" id="month" placeholder="MM" maxlength="2">
+                        <p class="empty">Bu alan boş bırakılamaz.</p>
+                        <p class="error">Geçersiz giriş, lütfen yalnızca sayı giriniz.</p>
+                        <input type="text" name="year" id="year" placeholder="AA" maxlength="2">
+                        <p class="empty">Bu alan boş bırakılamaz.</p>
+                        <p class="error">Geçersiz giriş, lütfen yalnızca sayı giriniz.</p>
+                    </div>
+                    <div class="cvc">
+                        <label for="date">CVC</label>
+                        <input type="text" name="cvc" id="cvc" placeholder="Ex.: 123" maxlength="3">
+                        <p class="empty">Bu alan boş bırakılamaz.</p>
+                        <p class="error">Geçersiz giriş, lütfen yalnızca sayı giriniz.</p>
+                    </div>
+                </div>
+
+                <button type="submit">Onayla</button>
+            </form>
+
+            <form class="succeed-form hide">
+                <img src="~/credit-card-form-main/images/icon-complete.svg" alt="">
+                <h2>TEŞEKKÜRLER!</h2>
+                <p>Kart bilgileriniz eklendi</p>
+                <button type="submit">Geri Dön</button>
+            </form>
+
+        </div>
+    </section>
+
+    <script src="~/credit-card-form-main/script.js"></script>
+
+</body>
+
+</html>

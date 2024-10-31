@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "PartialDeals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>Haftalık Tekliflerimizi Keşfedin</h4>
+                <h2>Muhteşem Fiyatlar  &amp; Daha Fazlası</h2>
+                @*<div class="border-button"><a href="about.html">Discover More</a></div>*@
+            </div>
+        </div>
+    </div>
+</div>
+@model List<Project2WooxTravel.Entities.Destination>
+
+<div class="amazing-deals">
+    <div class="container">
+        <div class="row">
+            @foreach (var destination in Model)
+            {
+                <div class="col-lg-6 col-sm-6">
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="image">
+                                    <img src="@destination.ImageUrl" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                                <div class="content">
+                                    <h4>
+                                        @(destination.Title.Length > 50 ? destination.Title.Substring(0, 50) + "..." : destination.Title)
+                                    </h4>
+
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <i class="fa fa-clock"></i>
+                                            <span class="list">@destination.DayNight Days</span>
+                                        </div>
+                                        <div class="col-6">
+                                            <i class="fa fa-users"></i>
+                                            <span class="list">Capacity: @destination.Capacity</span>
+                                        </div>
+                                    </div>
+                                    <p>@(destination.Description.Length > 100 ? destination.Description.Substring(0, 100) + "..." : destination.Description)</p>
+
+                                    <div class="price">
+                                        <strong style="color: #000000;">Price: ₺@destination.Price</strong>
+                                    </div>
+
+                                    <div class="main-button">
+                                        <a href="reservation.html">Make a Reservation</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="col-lg-12">
+                <ul class="page-numbers">
+                    <li><a href="#"><i class="fa fa-arrow-left"></i></a></li>
+                    <li><a href="#">1</a></li>
+                    <li class="active"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
